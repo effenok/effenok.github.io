@@ -24,7 +24,7 @@ github_username:  effenok
 
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-tactile
+theme: minima
 plugins:
   - jekyll-feed
 
