@@ -1,5 +1,6 @@
 ---
-layout: post title:  "Distance-Vector and Periodic Broadcast?"
+layout: post 
+title:  "Distance-Vector and Periodic Broadcast?"
 categories: routing distance-vector
 ---
 
