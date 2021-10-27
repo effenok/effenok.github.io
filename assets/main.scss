@@ -1,0 +1,26 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+.todo {
+    background: yellow;
+}
+
+.note {
+	background-color: #e7f3fe;
+	border-left: 1px solid #2196F3;
+	border-right: 1px solid #2196F3;
+    padding: 10px 20px;
+    margin: 20px 20px ;
+}
+
+
+.important {
+	background-color: #ffffcc;
+    padding: 10px 20px;
+    margin: 15px 20px;
+}
+
+/** // 	border-left: 1px solid #2196F3;
+    // 	border-right: 1px solid #2196F3; **/
