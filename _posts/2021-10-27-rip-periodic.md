@@ -5,7 +5,8 @@ categories: routing distance-vector
 ---
 
 I am trying to finally start the blog, and unless I start with something small, I will never start at all. So, here it
-is. {: class="note"}
+is. 
+{: class="note"}
 
 I think everyone knows that RIP periodically sends routing updates. True!
 
