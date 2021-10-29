@@ -20,7 +20,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: jekyllrb
-github_username:  effenok
+github_username: effenok
 
 # Build settings
 markdown: kramdown
@@ -30,6 +30,10 @@ plugins:
 
 minima:
   skin: dark
+
+graphviz:
+  options: "-Tsvg -Kneato" # 'dot' command option
+  command: "neato"   # execute this string. specify full path to 'dot' if you need
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
