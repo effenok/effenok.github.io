@@ -27,39 +27,16 @@ edges (sorry, again too smart). Anyways...
 
 <div class="level">
     <div class="level-item">
-    <div class="container">
-        <p class="title is-6">this is not a bfs tree</p>
+        <div class="container">
+            <p class="title is-6">this is not a bfs tree</p>
+            <img src="/assets/images/spanning-trees/images.dot.3.png" alt="example of a non-bfs tree">
+        </div> 
 
-{% digraph a tree%} layout=dot; rankdir="BT"; edge [labelstyle="above, sloped"]; a [shape="doublecircle"]
-b [label="b\nparent=a"]
-c [label="c\nparent=b"]
-d [label="d\nparent=c"]
-b -> a [penwidth=2]
-c -> b [penwidth=2]
-d -> c [penwidth=2]
-d -> a  [arrowhead="none"]
-{% enddigraph %}
-
-    </div> 
-    </div> 
-
-    <div class="level-item">
-    <div class="container has-text-centered">
-    <p class="title is-6">this is a bfs tree</p>
-
-{% digraph BFS tree%} layout=dot; rankdir="BT"; edge [labelstyle="above, sloped"]; a [shape="doublecircle"]
-b [label="b\nparent=a"]
-c [label="c\nparent=b"]
-d [label="d\nparent=a"]
-b -> a [penwidth=2]
-c -> b [penwidth=2]
-d -> c [arrowhead="none"]
-d -> a [penwidth=2]
-{% enddigraph %}
-
+        <div class="container has-text-centered">
+            <p class="title is-6">this is a bfs tree</p>
+            <img src="/assets/images/spanning-trees/images.dot.4.png" alt="example of bfs tree">
+        </div>
     </div>
-    </div>
-
 </div>
 
 So, how do we do it. Well, we introduce distance to the root, in number of edges traversed, have each node keep track of
@@ -76,7 +53,7 @@ neighbor will set its distance to the distance received in message plus one. The
 message with distance one to all neighbors. And so on. When a node receives `build-tree` message, it will check the
 distance in the message, and, if the distance is smaller change its parent.
 
-
+<!-- ---------------------------------------------------------------------------------------------------- -->
 <div class="language-plaintext highlighter-rouge">
 <pre class="highlight">
 <code>
@@ -104,6 +81,7 @@ on receive build-tree {root, distance} from neighbor j
 </code>
 </pre>
 </div>
+<!-- ---------------------------------------------------------------------------------------------------- -->
 
 Basically, what we did, was introduced metric, called _hop-count_, and calculate the tree based on this metric. One can
 say that BFS is Bellman-Ford with *hop count* distance. 
@@ -112,20 +90,7 @@ say that BFS is Bellman-Ford with *hop count* distance.
 Here's our tree
 
 <div class="container has-text-centered">
-{% digraph BFS tree%}
-layout=dot;
-rankdir="BT";
-edge [labelstyle="above, sloped"];
-a [shape="doublecircle"]
-b [label="b\nparent=a\nd=1"]
-c [label="c\nparent=b\nd=2"]
-d [label="d\nparent=a\nd=1"]
-b -> a [penwidth=2]
-c -> b [penwidth=2]
-d -> c [arrowhead="none"]
-d -> a [penwidth=2]
-{% enddigraph %}
-
+<img src="/assets/images/spanning-trees/images.dot.5.png" alt="example of bfs tree">
 </div>
 
 
@@ -144,21 +109,10 @@ with the same distance, there is no way of knowing which one the node will selec
 tree is still arbitrary in a sense that node *e* can select either *c* or *d* as its parent.
 
 <div class="container has-text-centered">
-{% digraph the tree could look like this%}
-layout=dot;
-rankdir="BT";
-a [shape="doublecircle"]
-b [label="b\nparent=a\nd=1"]
-c [label="c\nparent=b\nd=2"]
-d [label="d\nparent=b\nd=2"]
-e [label="e\nparent=c\nd=3"]
-b -> a [penwidth=2]
-c -> b [penwidth=2]
-d -> b [penwidth=2]
-e -> c [penwidth=2]
-e -> d [arrowhead="none"]
-{% enddigraph %}
+<img src="/assets/images/spanning-trees/images.dot.6.png" alt="example of bfs tree">
 </div>
+
+
 
 We can solve this by using some kind of tie-breaking. The common approach is to use tie-breaking based on node
 identifiers. For this, node identifiers need to be comparable. To be more precise we need the set of identifiers to be
@@ -166,6 +120,9 @@ totally orderable, i.e., for every two elements one can say which one is smaller
 can check wikipedia for that. Let's say that these unique ids are numbers. Numbers can be totally ordered, i. e., one
 can say which number is smaller and which is larger. I think everything in the computer can be viewed as n-bit number
 and can be compared based on it.
+
+**concept:** using tie-breakers to achieve determinism
+{: .notification .is-info}
 
 Let's change the code
 
@@ -186,15 +143,5 @@ Now, under assumption that there is only one link between each pair of nodes, th
 
 We haven't fixed non-determinism in this situation, but we will skip it for now.
 <div class="container has-text-centered">
-{% digraph %}
-layout=dot;
-rankdir="BT";
-a [shape="doublecircle"]
-b [label="b\nparent=a\nd=1"]
-c [label="c\nparent=b\nd=2"]
-
-b -> a [penwidth=2]
-c -> b [penwidth=2]
-c -> b [arrowhead=none]
-{% enddigraph %}
+<img src="/assets/images/spanning-trees/images.dot.7.png" alt="example of bfs tree">
 </div>

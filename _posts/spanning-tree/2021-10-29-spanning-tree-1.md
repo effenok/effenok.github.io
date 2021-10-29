@@ -36,16 +36,8 @@ network. I will talk about the model later.
 {: .notification .is-info}
 
 <div class="container has-text-centered">
-{% graph %}
-    node[shape="circle"]
-    a [xlabel="a is a process, residing\nat graph node"]
-    a -- b
-    b -- c
-    c -- d [label="channel"]
-    d -- b
-{% endgraph %}
-
-<p> distributed system</p>
+<p class="title is-6"> distributed system</p>
+<img src="/assets/images/spanning-trees/images.dot.png" alt="distributed system">
 </div>
 
 There are different models that describe properties of channels, depending on what channels can do. Typical cases are

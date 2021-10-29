@@ -1,0 +1,92 @@
+graph distributed_system {
+layout=neato;
+node[shape="circle"]
+a [xlabel="a is a process, residing\nat graph node"]
+a -- b
+b -- c
+c -- d [label="channel"]
+d -- b
+}
+
+digraph basic_tree {
+layout=dot;
+rankdir="BT";
+a [shape="doublecircle",xlabel="root"]
+b [label="b\nparent=a"]
+c [label="c\nparent=b"]
+d [label="d\nparent=b"]
+e [label="e\nparent=c"]
+b -> a [penwidth=2]
+c -> b [penwidth=2]
+d -> b [penwidth=2]
+e -> c [penwidth=2]
+e -> d [arrowhead="none"]
+}
+
+digraph non_bfs_tree_ex {
+layout=dot; rankdir="BT";
+edge [labelstyle="above, sloped"];
+a [shape="doublecircle"]
+b [label="b\nparent=a"]
+c [label="c\nparent=b"]
+d [label="d\nparent=c"]
+b -> a [penwidth=2]
+c -> b [penwidth=2]
+d -> c [penwidth=2]
+d -> a  [arrowhead="none"]
+}
+
+digraph bfs_tree_ex {
+layout=dot;
+rankdir="BT";
+edge [labelstyle="above, sloped"];
+a [shape="doublecircle"]
+b [label="b\nparent=a"]
+c [label="c\nparent=b"]
+d [label="d\nparent=a"]
+b -> a [penwidth=2]
+c -> b [penwidth=2]
+d -> c [arrowhead="none"]
+d -> a [penwidth=2]
+}
+
+digraph BFS {
+layout=dot;
+rankdir="BT";
+edge [labelstyle="above, sloped"];
+a [shape="doublecircle"]
+b [label="b\nparent=a\nd=1"]
+c [label="c\nparent=b\nd=2"]
+d [label="d\nparent=a\nd=1"]
+b -> a [penwidth=2]
+c -> b [penwidth=2]
+d -> c [arrowhead="none"]
+d -> a [penwidth=2]
+}
+
+digraph deterministic_bfs{
+layout=dot;
+rankdir="BT";
+a [shape="doublecircle"]
+b [label="b\nparent=a\nd=1"]
+c [label="c\nparent=b\nd=2"]
+d [label="d\nparent=b\nd=2"]
+e [label="e\nparent=c\nd=3"]
+b -> a [penwidth=2]
+c -> b [penwidth=2]
+d -> b [penwidth=2]
+e -> c [penwidth=2]
+e -> d [arrowhead="none"]
+}
+
+digraph deterministic_bfs2{
+layout=dot;
+rankdir="BT";
+a [shape="doublecircle"]
+b [label="b\nparent=a\nd=1"]
+c [label="c\nparent=b\nd=2"]
+
+b -> a [penwidth=2]
+c -> b [penwidth=2]
+c -> b [arrowhead=none]
+}

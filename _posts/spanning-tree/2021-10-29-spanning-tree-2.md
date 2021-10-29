@@ -73,21 +73,8 @@ that trivial when constructing trees based on distance.
     - each node knows when the tree is stable
 
 <div class="container has-text-centered">
-{% digraph the tree could look like this%}
-layout=dot;
-rankdir="BT";
-a [shape="doublecircle",xlabel="root"]
-b [label="b\nparent=a"]
-c [label="c\nparent=b"]
-d [label="d\nparent=b"]
-e [label="e\nparent=c"]
-b -> a [penwidth=2]
-c -> b [penwidth=2]
-d -> b [penwidth=2]
-e -> c [penwidth=2]
-e -> d [arrowhead="none"]
-{% enddigraph %}
 <p> resulting spanning tree</p>
+<img src="/assets/images/spanning-trees/images.dot.2.png" alt="distributed system">
 </div>
 
 ### For state machine lovers
@@ -126,55 +113,3 @@ on receving build-tree {root} from neighbor j
     else 
         ignore the message
 ```
-
-### How it looks
-
-The algorithm does something like this
-
-<div class="container has-text-centered">
-{% digraph %}
-node[shape="circle"]
-a [shape="doublecircle",xlabel="root"]
-b -> a [arrowhead="none",label="m->"]
-c -> b [arrowhead="none"]
-d -> b [arrowhead="none"]
-e -> c [arrowhead="none"]
-e -> d [arrowhead="none"]
-{% enddigraph %}
-
-{% digraph %} node[shape="circle"]
-a [shape="doublecircle",xlabel="root"]
-b [xlabel="parent=a"]
-b -> a [penwidth=2]
-c -> b [arrowhead="none",label="m->"]
-d -> b [arrowhead="none",label="m->"]
-e -> c [arrowhead="none"]
-e -> d [arrowhead="none"]
-{% enddigraph %}
-
-{% digraph %} node[shape="circle"]
-a [shape="doublecircle",xlabel="root"]
-b [xlabel="parent=a"]
-c [xlabel="parent=b"]
-d [xlabel="parent=b"]
-b -> a [penwidth=2]
-c -> b [penwidth=2]
-d -> b [penwidth=2]
-e -> c [arrowhead="none",label="m->"]
-e -> d [arrowhead="none",label="m->"]
-{% enddigraph %}
-
-{% digraph %} node[shape="circle"]
-a [shape="doublecircle",xlabel="root"]
-b [xlabel="parent=a"]
-c [xlabel="parent=b"]
-d [xlabel="parent=b"]
-e [xlabel="parent=c"]
-b -> a [penwidth=2]
-c -> b [penwidth=2]
-d -> b [penwidth=2]
-e -> c [penwidth=2]
-e -> d [arrowhead="none"]
-{% enddigraph %}
-
-</div>
