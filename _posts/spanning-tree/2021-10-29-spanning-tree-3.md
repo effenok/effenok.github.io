@@ -1,5 +1,6 @@
 ---
-layout: post title:  "Spanning Trees: Breadth-First-Search Tree"
+layout: post 
+title:  "Spanning Trees: Breadth-First-Search Tree"
 categories: spanning-tree
 ---
 
@@ -105,7 +106,8 @@ on receive build-tree {root, distance} from neighbor j
 </div>
 
 Basically, what we did, was introduced metric, called _hop-count_, and calculate the tree based on this metric. One can
-say that BFS is Bellman-Ford with *hop count* distance. {: .notification }
+say that BFS is Bellman-Ford with *hop count* distance. 
+{: .notification }
 
 Here's our tree
 

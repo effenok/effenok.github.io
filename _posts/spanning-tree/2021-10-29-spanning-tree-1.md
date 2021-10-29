@@ -1,5 +1,6 @@
 ---
-layout: post title:  "Spanning Trees: Introduction"
+layout: post 
+title:  "Spanning Trees: Introduction"
 categories: spanning-tree
 ---
 
@@ -30,8 +31,9 @@ associated with a *process* and each edge is associated with a *channel*. Inform
 variables, and is communicating with other processes by sending and receiving *messages* on channels. Channel delivers
 messages from the sending process to receiving process.
 
-{: .notification .is-info} Keep in mind, that network protocols work on different assumptions about the underlying
+Keep in mind, that network protocols work on different assumptions about the underlying
 network. I will talk about the model later.
+{: .notification .is-info}
 
 <div class="container has-text-centered">
 {% graph %}

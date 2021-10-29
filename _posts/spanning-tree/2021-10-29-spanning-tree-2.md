@@ -1,5 +1,6 @@
 ---
-layout: post title:  "Spanning Trees: Basic Tree"
+layout: post
+title:  "Spanning Trees: Basic Tree"
 categories: spanning-tree
 ---
 
@@ -62,10 +63,11 @@ Ok, too much text, but here is a simple spanning tree. What have we achieved, an
     - tree is not a shortest path tree or anything, it can be suboptimal.
     - tree is arbitrary, and there is no control on the structure of the tree
 
-{: .notification } One thing to note about this algorithm, is that each node knows when it achieves a quiescence state.
+One thing to note about this algorithm, is that each node knows when it achieves a quiescence state.
 Informally, quiescence state is a state in which internal state of the node does not change. Here it means that each
 node knows when the construction of the tree has stabilized. Yes, it is trivial here, but this is something that is not
 that trivial when constructing trees based on distance.
+ {: .notification }
 
 - **achieved**
     - each node knows when the tree is stable
