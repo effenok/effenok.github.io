@@ -1,7 +1,7 @@
 ---
 layout: post 
 title:  "Shortest Paths to What?"
-categories: routing
+categories: notes
 ---
 
 Here is another super short post.

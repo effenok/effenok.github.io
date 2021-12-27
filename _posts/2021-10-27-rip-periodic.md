@@ -1,7 +1,7 @@
 ---
 layout: post 
 title:  "Distance-Vector and Periodic Broadcast?"
-categories: routing distance-vector
+categories: notes
 ---
 
 I am trying to finally start the blog, and unless I start with something small, I will never start at all. So, here it is. 
