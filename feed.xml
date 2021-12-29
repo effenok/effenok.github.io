@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-29T11:10:01+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Network89</title><subtitle>hey. welcome to my blog where i try to share some random rumbling about networking</subtitle><entry><title type="html">Shortest Paths to What?</title><link href="http://localhost:4000/notes/2021/10/29/shortest-paths.html" rel="alternate" type="text/html" title="Shortest Paths to What?" /><published>2021-10-29T00:00:00+00:00</published><updated>2021-10-29T00:00:00+00:00</updated><id>http://localhost:4000/notes/2021/10/29/shortest-paths</id><content type="html" xml:base="http://localhost:4000/notes/2021/10/29/shortest-paths.html">&lt;p&gt;Here is another super short post.&lt;/p&gt;
+
+&lt;p&gt;Normally, shortest path problems compute distances to nodes. Well, this is normally.&lt;/p&gt;
+
+&lt;p class=&quot;notification is-info&quot;&gt;Network routing protocols compute shortest paths to &lt;strong&gt;links&lt;/strong&gt;, not &lt;strong&gt;nodes&lt;/strong&gt;.&lt;/p&gt;</content><author><name></name></author><category term="notes" /><summary type="html">Here is another super short post.</summary></entry><entry><title type="html">Spanning Trees: Introduction</title><link href="http://localhost:4000/spanning-tree/2021/10/29/spanning-tree-1.html" rel="alternate" type="text/html" title="Spanning Trees: Introduction" /><published>2021-10-29T00:00:00+00:00</published><updated>2021-10-29T00:00:00+00:00</updated><id>http://localhost:4000/spanning-tree/2021/10/29/spanning-tree-1</id><content type="html" xml:base="http://localhost:4000/spanning-tree/2021/10/29/spanning-tree-1.html">&lt;p&gt;Spanning Trees:&lt;/p&gt;
+&lt;ul&gt;
+
+
+ 
+&lt;li&gt;Spanning Trees: Introduction&lt;/li&gt;
+
+ 
+&lt;li&gt;&lt;a href=&quot;/spanning-tree/2021/10/29/spanning-tree-2.html&quot;&gt;Spanning Trees: Basic Tree&lt;/a&gt;&lt;/li&gt;
+
+ 
+&lt;li&gt;&lt;a href=&quot;/spanning-tree/2021/10/29/spanning-tree-3.html&quot;&gt;Spanning Trees: Breadth-First-Search Tree&lt;/a&gt;&lt;/li&gt;
+
+
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Constructing spanning trees is a basic building block in all distance-vector routing protocols as well as STP/RSTP. All
+these protocols can be described as based distributed Bellman-Ford. Well, STP is not distance-vector protocol, since
+there are no vectors. I think of this series as a bridge between distributed algorithms for constructing spanning trees
+and how they are used in network protocols.&lt;/p&gt;
+
+&lt;h3 id=&quot;distributed-algorithm&quot;&gt;Distributed Algorithm&lt;/h3&gt;
+
+&lt;p&gt;Here, I will use some typical notation commonly used in distributed systems. The system is modelled as a graph G=(V, E).
+V is a set of vertices, and vertices are interconnected by edges, where each edge connects two vertices. Each vertex is
+associated with a &lt;em&gt;process&lt;/em&gt; and each edge is associated with a &lt;em&gt;channel&lt;/em&gt;. Informally, a &lt;em&gt;process&lt;/em&gt; has some state
+variables, and is communicating with other processes by sending and receiving &lt;em&gt;messages&lt;/em&gt; on channels. Channel delivers
+messages from the sending process to receiving process.&lt;/p&gt;
+
+&lt;p class=&quot;notification is-info&quot;&gt;Keep in mind, that network protocols work on different assumptions about the underlying
+network. I will talk about the model later.&lt;/p&gt;
+
+&lt;div class=&quot;container has-text-centered&quot;&gt;
+&lt;p class=&quot;title is-6&quot;&gt; distributed system&lt;/p&gt;
+&lt;img src=&quot;/assets/images/spanning-trees/images.dot.png&quot; alt=&quot;distributed system&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;There are different models that describe properties of channels, depending on what channels can do. Typical cases are
+message loss, message duplication, reordering, etc. For now, I will assume that the channels are reliable and are not
+reordering (also known as &lt;em&gt;reliable FIFO channel&lt;/em&gt;). That is, every sent message is guaranteed to be delivered and
+messages are delivered in the same order in which they are sent.&lt;/p&gt;
+
+&lt;p&gt;Also, at the beginning I will assume that one node is configured to be the root of the spanning tree. I also assume that
+each process has a unique id. It is an arbitrary number.&lt;/p&gt;
+
+&lt;p&gt;Ok, let’s build some trees, shall we.&lt;/p&gt;</content><author><name></name></author><category term="spanning-tree" /><summary type="html">Spanning Trees:</summary></entry><entry><title type="html">Spanning Trees: Basic Tree</title><link href="http://localhost:4000/spanning-tree/2021/10/29/spanning-tree-2.html" rel="alternate" type="text/html" title="Spanning Trees: Basic Tree" /><published>2021-10-29T00:00:00+00:00</published><updated>2021-10-29T00:00:00+00:00</updated><id>http://localhost:4000/spanning-tree/2021/10/29/spanning-tree-2</id><content type="html" xml:base="http://localhost:4000/spanning-tree/2021/10/29/spanning-tree-2.html">&lt;p&gt;Spanning Trees:&lt;/p&gt;
+&lt;ul&gt;
+
+
+ 
+&lt;li&gt;&lt;a href=&quot;/spanning-tree/2021/10/29/spanning-tree-1.html&quot;&gt;Spanning Trees: Introduction&lt;/a&gt;&lt;/li&gt;
+
+ 
+&lt;li&gt;Spanning Trees: Basic Tree&lt;/li&gt;
+
+ 
+&lt;li&gt;&lt;a href=&quot;/spanning-tree/2021/10/29/spanning-tree-3.html&quot;&gt;Spanning Trees: Breadth-First-Search Tree&lt;/a&gt;&lt;/li&gt;
+
+
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;basic-tree&quot;&gt;Basic Tree&lt;/h2&gt;
+
+&lt;p&gt;The first algorithm constructs &lt;em&gt;any&lt;/em&gt; spanning tree, rooted at a pre-defined node. This is a very simple algorithm. Root
+node sends a special message, let’s call it &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build-tree&lt;/code&gt; to all its neighbors. Each neighbor receives the message, sets
+its parent node to the sender of the message and then sends its own &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build-tree&lt;/code&gt; message to all of its neighbors except
+for the parent. Note, that nodes (ehm, i mean processes) can receive multiple &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build-tree&lt;/code&gt; messages. In the simple
+algorithm, each node selects the sender of the first received  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build-tree&lt;/code&gt; message to be its parent.&lt;/p&gt;
+
+&lt;p&gt;Let’s define the algorithm more formally. First, each node has a unique identifier. Second, each node wants to know the
+current root. Well, let’s assume that it needs to, although it is not strictly necessary for this algorithm. Third, each
+node saves its parent node. The root node starts with root equal to itself, and null parent. This will never change. All
+other nodes do not know the values of either root or parent, thus they start with these values being null and fill them
+later.&lt;/p&gt;
+
+&lt;p&gt;Nodes exchange the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build-tree&lt;/code&gt;
+message. This message needs to carry the id of the root node.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// Basic spanning tree algorithm
+
+variables = { 
+    uid: &amp;lt;random unique id&amp;gt;, 
+    parent: uid or null, initially null, 
+    root: uid or null, initially node's id for root node and null for other nodes
+}
+
+messages = build-tree {root: uid}
+
+start: 
+    if /* node is root */ self.root != null
+        send build-tree to all neighbors
+
+on receive build-tree {root} from neighbor j
+    if self.parent == null
+        self.parent = j
+        self.root = build-tree.root
+        send build-tree to all neighbors except j
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ok, too much text, but here is a simple spanning tree. What have we achieved, and what not?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;achieved&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;construct a spanning tree, where each node knows its parent&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;not achieved&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;tree is not a shortest path tree or anything, it can be suboptimal.&lt;/li&gt;
+      &lt;li&gt;tree is arbitrary, and there is no control on the structure of the tree&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p class=&quot;notification&quot;&gt;One thing to note about this algorithm, is that each node knows when it achieves a quiescence state.
+Informally, quiescence state is a state in which internal state of the node does not change. Here it means that each
+node knows when the construction of the tree has stabilized. Yes, it is trivial here, but this is something that is not
+that trivial when constructing trees based on distance.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;achieved&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;each node knows when the tree is stable&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;container has-text-centered&quot;&gt;
+&lt;p&gt; resulting spanning tree&lt;/p&gt;
+&lt;img src=&quot;/assets/images/spanning-trees/images.dot.2.png&quot; alt=&quot;distributed system&quot; /&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;for-state-machine-lovers&quot;&gt;For state machine lovers&lt;/h3&gt;
+
+&lt;p&gt;If you like state machines, I can also define states and variables that make sense in these states. Although these
+states will not make much sense in the next two algorithms below. So, root can have a special state &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;root&lt;/code&gt;. For each
+other node something happens for the first received &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build-tree&lt;/code&gt; message. Let’s define two states - &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;unmarked&lt;/code&gt; and
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;marked&lt;/code&gt;, for nodes that have not yet received or have already received their first &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build-tree&lt;/code&gt; message. Since there
+are states, i will attach state variables to states. This can be done in Rust.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// Basic spanning tree algorithm with states
+
+states = {root, unmarked, marked }
+
+variables = { 
+    uid: &amp;lt;random unique id&amp;gt;, 
+    
+    in state marked {
+        root: uid of root node
+        parent: uid of parent node
+    }
+}
+
+messages = build-tree {root: uid}
+
+start: 
+    if in state root: 
+        send build-tree to all neighbors
+
+on receving build-tree {root} from neighbor j
+    if in state unmarked
+        self.parent = j
+        self.root = build-tree.root
+        send build-tree to all neighbors except j
+    else 
+        ignore the message
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="spanning-tree" /><summary type="html">Spanning Trees:</summary></entry><entry><title type="html">Spanning Trees: Breadth-First-Search Tree</title><link href="http://localhost:4000/spanning-tree/2021/10/29/spanning-tree-3.html" rel="alternate" type="text/html" title="Spanning Trees: Breadth-First-Search Tree" /><published>2021-10-29T00:00:00+00:00</published><updated>2021-10-29T00:00:00+00:00</updated><id>http://localhost:4000/spanning-tree/2021/10/29/spanning-tree-3</id><content type="html" xml:base="http://localhost:4000/spanning-tree/2021/10/29/spanning-tree-3.html">&lt;p&gt;Spanning Trees:&lt;/p&gt;
+&lt;ul&gt;
+
+
+ 
+&lt;li&gt;&lt;a href=&quot;/spanning-tree/2021/10/29/spanning-tree-1.html&quot;&gt;Spanning Trees: Introduction&lt;/a&gt;&lt;/li&gt;
+
+ 
+&lt;li&gt;&lt;a href=&quot;/spanning-tree/2021/10/29/spanning-tree-2.html&quot;&gt;Spanning Trees: Basic Tree&lt;/a&gt;&lt;/li&gt;
+
+ 
+&lt;li&gt;Spanning Trees: Breadth-First-Search Tree&lt;/li&gt;
+
+
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;breadth-first-search-tree&quot;&gt;Breadth-First-Search Tree&lt;/h2&gt;
+
+&lt;p&gt;Now, that we know how to construct any spanning tree, let’s construct a breadth-first-search (&lt;em&gt;bfs&lt;/em&gt;) tree. Well, this
+version is somewhat different from the “traditional” breadth-first-search algorithm. Traditional algorithm visits nodes
+in the specific order, such that nodes that are direct neighbors of the root are visited first, then their neighbors,
+and so on. In a distributed version we want to construct a tree, such that each node’s parent is visited before the node
+in the bfs order. Well, this super smart statement basically says that each parent is closer to the root in number of
+edges (sorry, again too smart). Anyways…&lt;/p&gt;
+
+&lt;div class=&quot;level&quot;&gt;
+    &lt;div class=&quot;level-item&quot;&gt;
+        &lt;div class=&quot;container&quot;&gt;
+            &lt;p class=&quot;title is-6&quot;&gt;this is not a bfs tree&lt;/p&gt;
+            &lt;img src=&quot;/assets/images/spanning-trees/images.dot.3.png&quot; alt=&quot;example of a non-bfs tree&quot; /&gt;
+        &lt;/div&gt; 
+
+        &lt;div class=&quot;container has-text-centered&quot;&gt;
+            &lt;p class=&quot;title is-6&quot;&gt;this is a bfs tree&lt;/p&gt;
+            &lt;img src=&quot;/assets/images/spanning-trees/images.dot.4.png&quot; alt=&quot;example of bfs tree&quot; /&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;So, how do we do it. Well, we introduce distance to the root, in number of edges traversed, have each node keep track of
+its distance, have messages carry the distance, and have nodes correct their parent pointers, when they receive messages
+with smaller distance. Pfeu, I use too many too smart words today. Let’s try again.&lt;/p&gt;
+
+&lt;p&gt;So, how do we do it. We introduce distance to the root, that each node tracks of. Each node will save its distance to
+its current parent. To calculate this distance, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build-tree&lt;/code&gt; message will carry sender’s distance to the root. The
+receiver, calculates its distance by adding one to the message. Also, each node will change its parent, if it sees a
+message with smaller distance to the root.&lt;/p&gt;
+
+&lt;p&gt;Root obviously has distance zero. And root sends its &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build-tree&lt;/code&gt; message with distance zero to its neighbors. Each
+neighbor will set its distance to the distance received in message plus one. Then it will send its &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build-tree&lt;/code&gt;
+message with distance one to all neighbors. And so on. When a node receives &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build-tree&lt;/code&gt; message, it will check the
+distance in the message, and, if the distance is smaller change its parent.&lt;/p&gt;
+
+&lt;!-- ---------------------------------------------------------------------------------------------------- --&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;
+&lt;code&gt;
+// Breadth-First Search Algorithm
+
+variables = { uid: &amp;lt;random unique id&amp;gt;, parent: uid or null, initially null,
+&lt;em&gt;distance: number or infinity, initially zero for root node and infinity for everyone else&lt;/em&gt;
+root: uid or null, initially node's id for root node and null for other nodes }
+
+messages = build-tree {root: uid, &lt;em&gt;distance: number&lt;/em&gt;}
+
+start:
+if /* node is root */ self.root != null send build-tree {root = self.uid, &lt;em&gt;distance = 0&lt;/em&gt;} to all neighbors
+
+on receive build-tree {root, distance} from neighbor j
+
+    &lt;em&gt;is_better_parent := (build-tree.distance + 1) &amp;lt; self.distance&lt;/em&gt;
+
+    &lt;em&gt;if is_better_parent&lt;/em&gt;
+        self.parent = j
+        &lt;em&gt;self.distance = build-tree.distance + 1&lt;/em&gt;
+        self.root = build-tree.root
+        send build-tree {root = self.root, &lt;em&gt;distance = self.distance&lt;/em&gt;} to all neighbors except j
+
+&lt;/code&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;!-- ---------------------------------------------------------------------------------------------------- --&gt;
+
+&lt;p class=&quot;notification&quot;&gt;Basically, what we did, was introduced metric, called &lt;em&gt;hop-count&lt;/em&gt;, and calculate the tree based on this metric. One can
+say that BFS is Bellman-Ford with &lt;em&gt;hop count&lt;/em&gt; distance.&lt;/p&gt;
+
+&lt;p&gt;Here’s our tree&lt;/p&gt;
+
+&lt;div class=&quot;container has-text-centered&quot;&gt;
+&lt;img src=&quot;/assets/images/spanning-trees/images.dot.5.png&quot; alt=&quot;example of bfs tree&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Ok, too much text, but here is a simple spanning tree. What have we achieved, and what not?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;achieved&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;construct a spanning tree, where each node knows its parent and its hop count to root&lt;/li&gt;
+      &lt;li&gt;tree is the shortest path with respect to hop count&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;not achieved&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;can only support hop-count.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;more-determinism&quot;&gt;More determinism&lt;/h3&gt;
+
+&lt;p&gt;There is one small issue, this tree is somewhat arbitrary, that is, if the node receives several build-tree messages
+with the same distance, there is no way of knowing which one the node will select. Recall the tree from part 2. This
+tree is still arbitrary in a sense that node &lt;em&gt;e&lt;/em&gt; can select either &lt;em&gt;c&lt;/em&gt; or &lt;em&gt;d&lt;/em&gt; as its parent.&lt;/p&gt;
+
+&lt;div class=&quot;container has-text-centered&quot;&gt;
+&lt;img src=&quot;/assets/images/spanning-trees/images.dot.6.png&quot; alt=&quot;example of bfs tree&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;We can solve this by using some kind of tie-breaking. The common approach is to use tie-breaking based on node
+identifiers. For this, node identifiers need to be comparable. To be more precise we need the set of identifiers to be
+totally orderable, i.e., for every two elements one can say which one is smaller. Ok, this is not a definition, but you
+can check wikipedia for that. Let’s say that these unique ids are numbers. Numbers can be totally ordered, i. e., one
+can say which number is smaller and which is larger. I think everything in the computer can be viewed as n-bit number
+and can be compared based on it.&lt;/p&gt;
+
+&lt;p class=&quot;notification is-info&quot;&gt;&lt;strong&gt;concept:&lt;/strong&gt; using tie-breakers to achieve determinism&lt;/p&gt;
+
+&lt;p&gt;Let’s change the code&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+on receive build-tree {root, distance} from neighbor j
+
+&lt;em&gt;my_distance_via := build-tree.distance + 1 is_better_parent := my_distance_via &amp;lt; self.distance || (my_distance_via
+== self.distance &amp;amp;&amp;amp; j &amp;lt; self.parent)&lt;/em&gt;
+
+&lt;em&gt; if is_better_parent &lt;/em&gt;
+    self.parent = j
+    self.root = build-tree.root
+    send build-tree to all neighbors except j
+&lt;/code&gt; &lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now, under assumption that there is only one link between each pair of nodes, the tree is fully deterministic.&lt;/p&gt;
+
+&lt;p&gt;We haven’t fixed non-determinism in this situation, but we will skip it for now.&lt;/p&gt;
+&lt;div class=&quot;container has-text-centered&quot;&gt;
+&lt;img src=&quot;/assets/images/spanning-trees/images.dot.7.png&quot; alt=&quot;example of bfs tree&quot; /&gt;
+&lt;/div&gt;</content><author><name></name></author><category term="spanning-tree" /><summary type="html">Spanning Trees:</summary></entry><entry><title type="html">Distance-Vector and Periodic Broadcast?</title><link href="http://localhost:4000/notes/2021/10/27/rip-periodic.html" rel="alternate" type="text/html" title="Distance-Vector and Periodic Broadcast?" /><published>2021-10-27T00:00:00+00:00</published><updated>2021-10-27T00:00:00+00:00</updated><id>http://localhost:4000/notes/2021/10/27/rip-periodic</id><content type="html" xml:base="http://localhost:4000/notes/2021/10/27/rip-periodic.html">&lt;p class=&quot;note&quot;&gt;I am trying to finally start the blog, and unless I start with something small, I will never start at all. So, here it is.&lt;/p&gt;
+
+&lt;p&gt;I think everyone knows that RIP periodically sends routing updates. True!&lt;/p&gt;
+
+&lt;p&gt;However, it seems to me, that a lot of times this statement is taught like it is a ground truth for distance-vector
+protocols in general. And this is not true! There is nothing, absolutely nothing, requiring a distance vector protocol
+to send messages periodically. RIP does this, which is a design choice of RIP.&lt;/p&gt;
+
+&lt;p&gt;EIGRP does not!. EIGRP does neighbor discovery, reliable transmissions, and only sends triggered updates on changes.&lt;/p&gt;</content><author><name></name></author><category term="notes" /><summary type="html">I am trying to finally start the blog, and unless I start with something small, I will never start at all. So, here it is.</summary></entry></feed>

@@ -1,0 +1,29 @@
+@startuml
+skinparam monochrome true
+skinparam roundcorner 20
+skinparam ParticipantPadding 50
+
+participant  "This Router"  as ME order 20
+participant "Other Router" as OTHER order 30 #gray
+!pragma teoz true
+ME -> OTHER: Hello
+activate ME
+create control "hello timer" as TIMER order 10
+&ME -> TIMER
+||40||
+TIMER -> ME: timeout
+& ME -> OTHER: Hello
+destroy TIMER
+deactivate ME
+...
+||40||
+ME -> OTHER: Hello
+...
+||40||
+ME -> OTHER: Hello
+...
+@enduml
+
+@startuml
+ME -> OTHER: Hello
+@enduml

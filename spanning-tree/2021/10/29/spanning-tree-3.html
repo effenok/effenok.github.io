@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Spanning Trees: Breadth-First-Search Tree | Network89</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Spanning Trees: Breadth-First-Search Tree" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Spanning Trees:" />
+<meta property="og:description" content="Spanning Trees:" />
+<link rel="canonical" href="http://localhost:4000/spanning-tree/2021/10/29/spanning-tree-3.html" />
+<meta property="og:url" content="http://localhost:4000/spanning-tree/2021/10/29/spanning-tree-3.html" />
+<meta property="og:site_name" content="Network89" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-10-29T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Spanning Trees: Breadth-First-Search Tree" />
+<script type="application/ld+json">
+{"description":"Spanning Trees:","@type":"BlogPosting","headline":"Spanning Trees: Breadth-First-Search Tree","dateModified":"2021-10-29T00:00:00+00:00","datePublished":"2021-10-29T00:00:00+00:00","url":"http://localhost:4000/spanning-tree/2021/10/29/spanning-tree-3.html","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/spanning-tree/2021/10/29/spanning-tree-3.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Network89" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Network89</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/networking/">Networking</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Spanning Trees: Breadth-First-Search Tree</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-10-29T00:00:00+00:00" itemprop="datePublished">Oct 29, 2021
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Spanning Trees:</p>
+<ul>
+
+
+ 
+<li><a href="/spanning-tree/2021/10/29/spanning-tree-1.html">Spanning Trees: Introduction</a></li>
+
+ 
+<li><a href="/spanning-tree/2021/10/29/spanning-tree-2.html">Spanning Trees: Basic Tree</a></li>
+
+ 
+<li>Spanning Trees: Breadth-First-Search Tree</li>
+
+
+</ul>
+
+<h2 id="breadth-first-search-tree">Breadth-First-Search Tree</h2>
+
+<p>Now, that we know how to construct any spanning tree, let’s construct a breadth-first-search (<em>bfs</em>) tree. Well, this
+version is somewhat different from the “traditional” breadth-first-search algorithm. Traditional algorithm visits nodes
+in the specific order, such that nodes that are direct neighbors of the root are visited first, then their neighbors,
+and so on. In a distributed version we want to construct a tree, such that each node’s parent is visited before the node
+in the bfs order. Well, this super smart statement basically says that each parent is closer to the root in number of
+edges (sorry, again too smart). Anyways…</p>
+
+<div class="level">
+    <div class="level-item">
+        <div class="container">
+            <p class="title is-6">this is not a bfs tree</p>
+            <img src="/assets/images/spanning-trees/images.dot.3.png" alt="example of a non-bfs tree" />
+        </div> 
+
+        <div class="container has-text-centered">
+            <p class="title is-6">this is a bfs tree</p>
+            <img src="/assets/images/spanning-trees/images.dot.4.png" alt="example of bfs tree" />
+        </div>
+    </div>
+</div>
+
+<p>So, how do we do it. Well, we introduce distance to the root, in number of edges traversed, have each node keep track of
+its distance, have messages carry the distance, and have nodes correct their parent pointers, when they receive messages
+with smaller distance. Pfeu, I use too many too smart words today. Let’s try again.</p>
+
+<p>So, how do we do it. We introduce distance to the root, that each node tracks of. Each node will save its distance to
+its current parent. To calculate this distance, the <code class="language-plaintext highlighter-rouge">build-tree</code> message will carry sender’s distance to the root. The
+receiver, calculates its distance by adding one to the message. Also, each node will change its parent, if it sees a
+message with smaller distance to the root.</p>
+
+<p>Root obviously has distance zero. And root sends its <code class="language-plaintext highlighter-rouge">build-tree</code> message with distance zero to its neighbors. Each
+neighbor will set its distance to the distance received in message plus one. Then it will send its <code class="language-plaintext highlighter-rouge">build-tree</code>
+message with distance one to all neighbors. And so on. When a node receives <code class="language-plaintext highlighter-rouge">build-tree</code> message, it will check the
+distance in the message, and, if the distance is smaller change its parent.</p>
+
+<!-- ---------------------------------------------------------------------------------------------------- -->
+<div class="language-plaintext highlighter-rouge">
+<pre class="highlight">
+<code>
+// Breadth-First Search Algorithm
+
+variables = { uid: &lt;random unique id&gt;, parent: uid or null, initially null,
+<em>distance: number or infinity, initially zero for root node and infinity for everyone else</em>
+root: uid or null, initially node's id for root node and null for other nodes }
+
+messages = build-tree {root: uid, <em>distance: number</em>}
+
+start:
+if /* node is root */ self.root != null send build-tree {root = self.uid, <em>distance = 0</em>} to all neighbors
+
+on receive build-tree {root, distance} from neighbor j
+
+    <em>is_better_parent := (build-tree.distance + 1) &lt; self.distance</em>
+
+    <em>if is_better_parent</em>
+        self.parent = j
+        <em>self.distance = build-tree.distance + 1</em>
+        self.root = build-tree.root
+        send build-tree {root = self.root, <em>distance = self.distance</em>} to all neighbors except j
+
+</code>
+</pre>
+</div>
+<!-- ---------------------------------------------------------------------------------------------------- -->
+
+<p class="notification">Basically, what we did, was introduced metric, called <em>hop-count</em>, and calculate the tree based on this metric. One can
+say that BFS is Bellman-Ford with <em>hop count</em> distance.</p>
+
+<p>Here’s our tree</p>
+
+<div class="container has-text-centered">
+<img src="/assets/images/spanning-trees/images.dot.5.png" alt="example of bfs tree" />
+</div>
+
+<p>Ok, too much text, but here is a simple spanning tree. What have we achieved, and what not?</p>
+
+<ul>
+  <li><strong>achieved</strong>
+    <ul>
+      <li>construct a spanning tree, where each node knows its parent and its hop count to root</li>
+      <li>tree is the shortest path with respect to hop count</li>
+    </ul>
+  </li>
+  <li><strong>not achieved</strong>
+    <ul>
+      <li>can only support hop-count.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="more-determinism">More determinism</h3>
+
+<p>There is one small issue, this tree is somewhat arbitrary, that is, if the node receives several build-tree messages
+with the same distance, there is no way of knowing which one the node will select. Recall the tree from part 2. This
+tree is still arbitrary in a sense that node <em>e</em> can select either <em>c</em> or <em>d</em> as its parent.</p>
+
+<div class="container has-text-centered">
+<img src="/assets/images/spanning-trees/images.dot.6.png" alt="example of bfs tree" />
+</div>
+
+<p>We can solve this by using some kind of tie-breaking. The common approach is to use tie-breaking based on node
+identifiers. For this, node identifiers need to be comparable. To be more precise we need the set of identifiers to be
+totally orderable, i.e., for every two elements one can say which one is smaller. Ok, this is not a definition, but you
+can check wikipedia for that. Let’s say that these unique ids are numbers. Numbers can be totally ordered, i. e., one
+can say which number is smaller and which is larger. I think everything in the computer can be viewed as n-bit number
+and can be compared based on it.</p>
+
+<p class="notification is-info"><strong>concept:</strong> using tie-breakers to achieve determinism</p>
+
+<p>Let’s change the code</p>
+
+<div class="language-plaintext highlighter-rouge">
+<pre class="highlight"><code>
+on receive build-tree {root, distance} from neighbor j
+
+<em>my_distance_via := build-tree.distance + 1 is_better_parent := my_distance_via &lt; self.distance || (my_distance_via
+== self.distance &amp;&amp; j &lt; self.parent)</em>
+
+<em> if is_better_parent </em>
+    self.parent = j
+    self.root = build-tree.root
+    send build-tree to all neighbors except j
+</code> </pre></div>
+
+<p>Now, under assumption that there is only one link between each pair of nodes, the tree is fully deterministic.</p>
+
+<p>We haven’t fixed non-determinism in this situation, but we will skip it for now.</p>
+<div class="container has-text-centered">
+<img src="/assets/images/spanning-trees/images.dot.7.png" alt="example of bfs tree" />
+</div>
+
+  </div><a class="u-url" href="/spanning-tree/2021/10/29/spanning-tree-3.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Network89</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Network89</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/effenok"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">effenok</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>hey. welcome to my blog where i try to share some random rumbling about networking</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

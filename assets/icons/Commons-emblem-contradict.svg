@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="48" height="48" id="svg1">
+  <defs id="defs3">
+    <linearGradient id="linearGradient2806">
+      <stop id="stop2808" style="stop-color:#000000;stop-opacity:1" offset="0"/>
+      <stop id="stop2810" style="stop-color:#000000;stop-opacity:0" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient2796">
+      <stop id="stop2798" style="stop-color:#ffffff;stop-opacity:1" offset="0"/>
+      <stop id="stop2800" style="stop-color:#dfdfdf;stop-opacity:1" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient2788">
+      <stop id="stop2790" style="stop-color:#ffffff;stop-opacity:1" offset="0"/>
+      <stop id="stop2792" style="stop-color:#ffffff;stop-opacity:0" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient2778">
+      <stop id="stop2780" style="stop-color:#ff7802;stop-opacity:1" offset="0"/>
+      <stop id="stop2782" style="stop-color:#ff8700;stop-opacity:1" offset="1"/>
+    </linearGradient>
+    <radialGradient cx="30.323671" cy="13.380429" r="29.755747" fx="30.323671" fy="13.380429" id="radialGradient2784" xlink:href="#linearGradient2778" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.53192,0,0,1.53192,-16.1297,-7.1173)"/>
+    <linearGradient x1="-0.36309087" y1="29.207693" x2="59.148403" y2="29.207693" id="linearGradient2794" xlink:href="#linearGradient2788" gradientUnits="userSpaceOnUse"/>
+    <radialGradient cx="31.760437" cy="22.226139" r="18.624397" fx="31.760437" fy="22.226139" id="radialGradient2802" xlink:href="#linearGradient2796" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.31653,0,0,1.31653,-10.0531,-9.28035)"/>
+    <radialGradient cx="25.25" cy="39.75" r="17.25" fx="25.25" fy="39.75" id="radialGradient2812" xlink:href="#linearGradient2806" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1,0,0,0.333333,0,26.5)"/>
+  </defs>
+  <metadata id="metadata4">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <dc:title/>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Jakub Steiner</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:contributor>
+          <cc:Agent>
+            <dc:title>Andreas Nilsson</dc:title>
+          </cc:Agent>
+        </dc:contributor>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/GPL/2.0/"/>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/GPL/2.0/">
+        <cc:permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+        <cc:permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+        <cc:requires rdf:resource="http://web.resource.org/cc/Notice"/>
+        <cc:permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+        <cc:requires rdf:resource="http://web.resource.org/cc/ShareAlike"/>
+        <cc:requires rdf:resource="http://web.resource.org/cc/SourceCode"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <path d="m 42.5,39.75 a 17.25,5.75 0 1 1 -34.5,0 17.25,5.75 0 1 1 34.5,0 z" transform="matrix(1.15942,0,0,1.50725,-3.77536,-22.163)" id="path2804" style="opacity:0.64432989;color:#000000;fill:url(#radialGradient2812);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible"/>
+  <path d="m 58.403591,29.207693 a 29.010935,29.010935 0 1 1 -58.0218695,0 29.010935,29.010935 0 1 1 58.0218695,0 z" transform="matrix(0.67131,0,0,0.67131,5.22237,3.41837)" id="path907" style="fill:url(#radialGradient2784);fill-opacity:1;fill-rule:evenodd;stroke:#d65d19;stroke-width:1.48962474;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"/>
+  <path d="m 50.384842,29.319231 a 18.624397,18.624397 0 1 1 -37.248795,0 18.624397,18.624397 0 1 1 37.248795,0 z" transform="matrix(0.780964,0,0,0.780964,0.172888,-0.147684)" id="path2159" style="fill:url(#radialGradient2802);fill-opacity:1;fill-rule:evenodd;stroke:none"/>
+  <path d="m 58.403591,29.207693 a 29.010935,29.010935 0 1 1 -58.0218695,0 29.010935,29.010935 0 1 1 58.0218695,0 z" transform="matrix(0.629301,0,0,0.629301,6.45712,4.64535)" id="path2786" style="opacity:0.37628868;fill:none;stroke:url(#linearGradient2794);stroke-width:1.58906472;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"/>
+  <path d="m 23.849817,14.492197 -3.418813,5.59489 -2.319969,-8.339563 5.738782,2.744673 z" id="path2793" style="fill:#d65d19;fill-opacity:1;stroke:none"/>
+  <path d="m 25.228842,31.959441 -0.618896,0 c -0.46275,-3.193778 -1.163535,-6.375388 -1.530953,-9.574345 -0.0038,-1.08336 0.443154,-1.502291 1.856686,-1.497001 1.394334,0.0052 1.828222,0.444439 1.824116,1.626239 -0.381351,3.153903 -0.994955,6.300024 -1.530953,9.445107 z" id="text6373" style="font-size:32px;font-style:normal;font-weight:normal;fill:#d65d19;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"/>
+  <path d="m 25.96961,34.002056 c 0,0.607547 -0.465629,1.100061 -1.040011,1.100061 -0.574383,0 -1.040012,-0.492514 -1.040012,-1.100061 0,-0.607547 0.465629,-1.100061 1.040012,-1.100061 0.574382,0 1.040011,0.492514 1.040011,1.100061 l 0,0 z" id="path6380" style="fill:#d65d19;fill-opacity:1;stroke:none"/>
+  <use transform="matrix(-1,0,0,1,50.047732,8.3307074e-8)" id="use10809" x="0" y="0" width="50" height="50" xlink:href="#path2793"/>
+  <path d="m 19.800797,15.847723 c -1.818334,0.388607 -4.552686,1.295054 -5.397511,4.960801 -0.78918,3.424265 1.24319,7.7476 4.072215,9.18376" id="path12585" style="fill:none;stroke:#d65d19;stroke-width:2.39393067;stroke-linecap:round;stroke-linejoin:miter"/>
+  <use transform="matrix(-1,0,0,1,50.288792,8.3307074e-8)" id="use12587" x="0" y="0" width="50" height="50" xlink:href="#path12585"/>
+</svg>
